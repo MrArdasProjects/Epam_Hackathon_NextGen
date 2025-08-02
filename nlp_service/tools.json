@@ -1,0 +1,137 @@
+[
+  {
+    "tool": "Consensus",
+    "use": "Makale özeti",
+    "academic_use": "Belirli konulardaki akademik görüşleri özetler.",
+    "how_to": "Konu başlığını yazın, sistem özetleri otomatik sunar.",
+    "keywords": [ "makale özeti", "özetleme", "research summary" ],
+    "link": "https://consensus.app",
+    "video_link": "https://educatorsaitools.com/consensus-ai/"
+  },
+  {
+    "tool": "Gamma.app",
+    "use": "Sunum hazırlama",
+    "academic_use": "Sunum formatında ders materyali hazırlamak isteyen akademisyenler için.",
+    "how_to": "Metin ve görselleri girin, şablon seçin, sunum otomatik oluşur.",
+    "keywords": [ "sunum", "slayt", "presentation" ],
+    "link": "https://gamma.app",
+    "video_link": "https://educatorsaitools.com/gamma/"
+  },
+  {
+    "tool": "Quizgecko",
+    "use": "Sınav sorusu oluşturma",
+    "academic_use": "Çoktan seçmeli sınavlar hazırlamak için.",
+    "how_to": "Metin girin, sorular otomatik üretilir.",
+    "keywords": [ "soru", "test", "quiz", "sınav" ],
+    "link": "https://quizgecko.com",
+    "video_link": "https://educatorsaitools.com/quizgecko/"
+  },
+  {
+    "tool": "Elicit",
+    "use": "Literatür tarama",
+    "academic_use": "Araştırma alanında ilgili kaynakları bulmak için.",
+    "how_to": "Konu başlığı girerek güncel kaynakları görebilirsiniz.",
+    "keywords": [ "literatür tarama", "araştırma bulma", "literature review" ],
+    "link": "https://elicit.org",
+    "video_link": "https://educatorsaitools.com/elicit-ai/"
+  },
+  {
+    "tool": "Scite.ai",
+    "use": "Kaynak doğrulama",
+    "academic_use": "Referansların güvenilirliğini analiz eder.",
+    "how_to": "Kaynağı girin, nerede ve nasıl kullanıldığını gösterir.",
+    "keywords": [ "kaynak doğrulama", "atıf kontrolü", "citation" ],
+    "link": "https://scite.ai",
+    "video_link": "https://educatorsaitools.com/scite-ai/"
+  },
+  {
+    "tool": "DeepL Write",
+    "use": "Yazım geliştirme",
+    "academic_use": "Akademik İngilizce metinleri düzeltmek ve iyileştirmek için.",
+    "how_to": "Metni yapıştırın, önerileri alın.",
+    "keywords": [ "akademik yazım", "gramer düzeltme", "yazı iyileştirme" ],
+    "link": "https://www.deepl.com/write",
+    "video_link": "https://educatorsaitools.com/deeplwrite/"
+  },
+  {
+    "tool": "Pictory",
+    "use": "Ders videosu hazırlama",
+    "academic_use": "Ders içeriklerini video haline getirmek için.",
+    "how_to": "Metinleri girin, görsel ve ses ekleyin, video oluşturun.",
+    "keywords": [ "ders videosu", "eğitim videosu", "video hazırlama" ],
+    "link": "https://pictory.ai",
+    "video_link": "https://educatorsaitools.com/pictory/"
+  },
+  {
+    "tool": "Teachermatic",
+    "use": "Ders planı oluşturma",
+    "academic_use": "Ders içeriklerini haftalık olarak düzenlemek için.",
+    "how_to": "Konu başlıklarını girerek haftalık planlar hazırlayabilirsiniz.",
+    "keywords": [ "ders planı", "müfredat", "syllabus" ],
+    "link": "https://teachermatic.com",
+    "video_link": "https://educatorsaitools.com/teachermatic/"
+  },
+  {
+    "tool": "Scholar GPT",
+    "use": "GPT tabanlı akademik asistan",
+    "academic_use": "Akademik sorulara GPT destekli yanıtlar sunar.",
+    "how_to": "Doğal dilde soru yazın, detaylı yanıt alın.",
+    "keywords": [ "akademik GPT", "GPT asistanı", "akademik araştırma yardımı" ],
+    "link": "https://scholar-gpt.org",
+    "video_link": "https://educatorsaitools.com/scholar/"
+  },
+  {
+    "tool": "Grammarly",
+    "use": "Yazım ve dilbilgisi düzeltme",
+    "academic_use": "Akademik yazılarda dilbilgisi, yazım ve üslup hatalarını düzeltir.",
+    "how_to": "Metni yapıştırın, dilbilgisi ve üslup düzeltme önerileri alın.",
+    "keywords": [ "gramer düzeltme", "yazım kontrolü", "akademik yazım" ],
+    "link": "https://grammarly.com",
+    "video_link": "https://educatorsaitools.com/grammarly/"
+  },
+  {
+    "tool": "QuillBot",
+    "use": "Paraphrasing ve özetleme",
+    "academic_use": "Metinleri akademik standartlara göre yeniden yazmak veya özetlemek için.",
+    "how_to": "Metni yapıştırın, yeniden yazım veya özetleme seçeneklerini kullanın.",
+    "keywords": [ "paraphrase", "özetleme", "yazı sadeleştirme" ],
+    "link": "https://quillbot.com",
+    "video_link": "https://educatorsaitools.com/quillbot/"
+  },
+  {
+    "tool": "Eduaide.ai",
+    "use": "Eğitim materyali geliştirme",
+    "academic_use": "Eğitimciler için ders planı, rubrik ve etkinlik önerileri üretir.",
+    "how_to": "İhtiyacınıza uygun modülü seçin ve materyalleri oluşturun.",
+    "keywords": [ "ders planı", "eğitim materyali", "rubrik" ],
+    "link": "https://eduaide.ai",
+    "video_link": "https://educatorsaitools.com/eduaide/"
+  },
+  {
+    "tool": "ClassPoint",
+    "use": "Etkileşimli sunum",
+    "academic_use": "PowerPoint üzerinden canlı anketler ve quizler düzenlemek için.",
+    "how_to": "PowerPoint içinde ClassPoint eklentisini kullanarak sorular oluşturun.",
+    "keywords": [ "interaktif sunum", "canlı quiz", "PowerPoint soru ekleme" ],
+    "link": "https://www.classpoint.io",
+    "video_link": "https://educatorsaitools.com/classpoint/"
+  },
+  {
+    "tool": "Mindgrasp",
+    "use": "Özet çıkarma",
+    "academic_use": "PDF, video ve ses dosyalarından özet ve önemli bilgiler elde eder.",
+    "how_to": "İçerik dosyasını yükleyin, otomatik özet alın.",
+    "keywords": [ "özet çıkarma", "bilgi yakalama", "video özeti" ],
+    "link": "https://mindgrasp.ai",
+    "video_link": "https://educatorsaitools.com/mindgrasp/"
+  },
+  {
+    "tool": "SlidesAI",
+    "use": "Otomatik sunum slaytı oluşturma",
+    "academic_use": "Metin girişine dayalı otomatik sunum slaytları üretir.",
+    "how_to": "Konu başlığını yazın, slayt tasarımlarını otomatik alın.",
+    "keywords": [ "otomatik sunum", "slayt oluşturma", "presentation generation" ],
+    "link": "https://slidesai.io",
+    "video_link": "https://educatorsaitools.com/slidesai/"
+  }
+]
