@@ -1,5 +1,11 @@
 import React from 'react';
 
+function formatMessage(text: string) {
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  return text.replace(urlRegex, url => `<a href="${url}" target="_blank" class="text-blue-600 underline">${url}</a>`);
+}
+
+
 interface ChatBotProps {
   open: boolean;
   setOpen: (open: boolean) => void;
@@ -55,17 +61,17 @@ const ChatBot = ({ open, setOpen, variant = 'small' }: ChatBotProps) => {
       {/* Mesajlar */}
       <div className="flex-1 p-3 overflow-y-auto space-y-2 bg-gray-50">
         {messages.map((msg, idx) => (
-          <div
-            key={idx}
-            className={`p-2 rounded-lg text-sm max-w-[80%] ${
-              msg.from === 'bot'
-                ? 'bg-gray-200 text-gray-800 self-start'
-                : 'bg-blue-500 text-white self-end ml-auto'
-            }`}
-          >
-            {msg.text}
-          </div>
-        ))}
+  <div
+    key={idx}
+    className={`p-2 rounded-lg text-sm max-w-[80%] ${
+      msg.from === 'bot'
+        ? 'bg-gray-200 text-gray-800 self-start'
+        : 'bg-blue-500 text-white self-end ml-auto'
+    }`}
+  >
+    <span dangerouslySetInnerHTML={{ __html: formatMessage(msg.text) }} />
+  </div>
+))}
       </div>
 
       {/* Giriş */}
