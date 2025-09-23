@@ -2,3 +2,13 @@ flask
 openai
 numpy
 tqdm
+python-dotenv
+langchain
+langchain-community
+langchain-openai
+beautifulsoup4
+requests
+selenium
+lxml
+googlesearch-python
+duckduckgo-search

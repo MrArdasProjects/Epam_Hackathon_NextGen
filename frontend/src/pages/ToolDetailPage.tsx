@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import YouTubePlayer from '../components/YouTubePlayer';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface Tool {
   tool: string;
@@ -22,16 +23,22 @@ const ToolDetailPage = () => {
   const { toolName } = useParams<{ toolName: string }>();
   const [tool, setTool] = useState<Tool | null>(null);
   const [loading, setLoading] = useState(true);
-  const [chatMessages, setChatMessages] = useState([
-    { from: 'bot', text: 'Bu araç hakkında sorularınızı sorabilirsiniz!' }
-  ]);
+  const { t } = useLanguage();
+  const [chatMessages, setChatMessages] = useState<Array<{from: string, text: string}>>([]);
   const [chatInput, setChatInput] = useState('');
+
+  // Dil değiştiğinde chat mesajını sıfırla
+  useEffect(() => {
+    setChatMessages([
+      { from: 'bot', text: t('toolDetail.chatGreeting') }
+    ]);
+  }, [t]);
 
   // Tool bilgilerini getir
   useEffect(() => {
     const fetchTool = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/tools');
+        const response = await fetch(`http://localhost:5000/api/tools?language=${t('language') || 'tr'}`);
         const tools = await response.json();
         const foundTool = tools.find((t: Tool) => 
           t.tool.toLowerCase().replace(/[^a-z0-9]/g, '-') === toolName
@@ -47,22 +54,27 @@ const ToolDetailPage = () => {
     if (toolName) {
       fetchTool();
     }
-  }, [toolName]);
+  }, [toolName, t]);
 
   const handleChatSend = async () => {
     if (!chatInput.trim() || !tool) return;
 
     const userMessage = chatInput;
-    setChatMessages(prev => [...prev, { from: 'user', text: userMessage }]);
+    const updatedMessages = [...chatMessages, { from: 'user', text: userMessage }];
+    setChatMessages(updatedMessages);
     setChatInput('');
 
     try {
-      // Tool-specific context ile sohbet
-      const contextMessage = `${tool.tool} aracı hakkında: ${userMessage}`;
+      // Tool-specific chat - artık tool_name parametresi gönderiyoruz
       const res = await fetch('http://localhost:5000/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: contextMessage }),
+        body: JSON.stringify({ 
+          message: userMessage,
+          language: t('language') || 'tr',
+          conversation_history: updatedMessages,
+          tool_name: tool.tool // Tool-specific chat için
+        }),
       });
 
       const data = await res.json();
@@ -71,7 +83,7 @@ const ToolDetailPage = () => {
       console.error("Chat hatası:", err);
       setChatMessages(prev => [...prev, { 
         from: 'bot', 
-        text: 'Bir hata oluştu. Lütfen tekrar deneyin.' 
+        text: t('toolDetail.chatError')
       }]);
     }
   };
@@ -100,7 +112,7 @@ const ToolDetailPage = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-900 flex items-center justify-center">
-        <div className="text-white text-xl">Araç bilgileri yükleniyor...</div>
+        <div className="text-white text-xl">{t('toolDetail.loading')}</div>
       </div>
     );
   }
@@ -110,13 +122,13 @@ const ToolDetailPage = () => {
       <div className="min-h-screen bg-gray-900 flex items-center justify-center">
         <div className="text-center text-white">
           <div className="text-6xl mb-4">❌</div>
-          <h2 className="text-2xl font-bold mb-4">Araç Bulunamadı</h2>
-          <p className="mb-6">Aradığınız araç mevcut değil.</p>
+          <h2 className="text-2xl font-bold mb-4">{t('toolDetail.notFound')}</h2>
+          <p className="mb-6">{t('toolDetail.notFoundDesc')}</p>
           <Link 
             to="/tools" 
             className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg transition-colors"
           >
-            Araçlar Kataloğuna Dön
+            {t('toolDetail.backToTools')}
           </Link>
         </div>
       </div>
@@ -133,10 +145,10 @@ const ToolDetailPage = () => {
               to="/tools" 
               className="text-purple-200 hover:text-white transition-colors"
             >
-              ← Geri
+              {t('toolDetail.back')}
             </Link>
             <span className="text-purple-200">|</span>
-            <span className="text-sm text-purple-200">AI Araçları</span>
+            <span className="text-sm text-purple-200">{t('toolDetail.aiTools')}</span>
           </div>
           
           <div className="flex items-center gap-6">
@@ -146,11 +158,11 @@ const ToolDetailPage = () => {
                 <h1 className="text-4xl font-bold">{tool.tool}</h1>
                 {tool.isFree ? (
                   <span className="bg-green-500 text-white text-sm px-3 py-1 rounded-full">
-                    Ücretsiz
+                    {t('toolDetail.free')}
                   </span>
                 ) : (
                   <span className="bg-orange-500 text-white text-sm px-3 py-1 rounded-full">
-                    Ücretli
+                    {t('toolDetail.paid')}
                   </span>
                 )}
               </div>
@@ -168,7 +180,7 @@ const ToolDetailPage = () => {
                     </span>
                   ))}
                   <span className="ml-2 text-purple-200">
-                    {tool.rating.toFixed(1)} ({tool.reviewCount} değerlendirme)
+                    {tool.rating.toFixed(1)} ({tool.reviewCount} {t('toolDetail.reviews')})
                   </span>
                 </div>
                 <span className="bg-purple-600 text-white text-sm px-3 py-1 rounded-full">
@@ -186,13 +198,13 @@ const ToolDetailPage = () => {
           <div className="lg:col-span-2 space-y-8">
             {/* Araç Açıklaması */}
             <div className="bg-gray-800 rounded-xl p-6">
-              <h2 className="text-2xl font-bold mb-4">📋 Araç Hakkında</h2>
+              <h2 className="text-2xl font-bold mb-4">{t('toolDetail.aboutTool')}</h2>
               <p className="text-gray-300 mb-4">{tool.academic_use}</p>
               
-              <h3 className="text-lg font-semibold mb-2">🚀 Nasıl Kullanılır?</h3>
+              <h3 className="text-lg font-semibold mb-2">{t('toolDetail.howToUse')}</h3>
               <p className="text-gray-300 mb-4">{tool.how_to}</p>
 
-              <h3 className="text-lg font-semibold mb-2">🏷️ Anahtar Kelimeler</h3>
+              <h3 className="text-lg font-semibold mb-2">{t('toolDetail.keywords')}</h3>
               <div className="flex flex-wrap gap-2">
                 {tool.keywords.map((keyword, index) => (
                   <span
@@ -207,36 +219,36 @@ const ToolDetailPage = () => {
 
             {/* Video Bölümleri */}
             <div className="bg-gray-800 rounded-xl p-6">
-              <h2 className="text-2xl font-bold mb-6">🎥 Eğitim Videoları</h2>
+              <h2 className="text-2xl font-bold mb-6">{t('toolDetail.educationVideos')}</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Kısa Tanıtım Videosu */}
                 <div className="bg-gray-700 rounded-lg p-4">
-                  <h3 className="text-lg font-semibold mb-3">📺 Kısa Tanıtım</h3>
+                  <h3 className="text-lg font-semibold mb-3">{t('toolDetail.shortIntro')}</h3>
                   <div className="mb-3">
                     <YouTubePlayer
                       videoId={tool.short_video}
-                      title={`${tool.tool} - Kısa Tanıtım`}
-                      placeholder="Tanıtım videosu"
+                      title={`${tool.tool} - ${t('toolDetail.shortIntro')}`}
+                      placeholder={t('toolDetail.shortIntro')}
                     />
                   </div>
                   <p className="text-sm text-gray-300">
-                    {tool.tool} aracının temel özelliklerini öğrenin
+                    {tool.tool} {t('toolDetail.shortDesc')}
                   </p>
                 </div>
 
                 {/* Detaylı Kullanım Videosu */}
                 <div className="bg-gray-700 rounded-lg p-4">
-                  <h3 className="text-lg font-semibold mb-3">🎓 Detaylı Kullanım</h3>
+                  <h3 className="text-lg font-semibold mb-3">{t('toolDetail.detailedUsage')}</h3>
                   <div className="mb-3">
                     <YouTubePlayer
                       videoId={tool.long_video}
-                      title={`${tool.tool} - Detaylı Kullanım`}
-                      placeholder="Kullanım videosu"
+                      title={`${tool.tool} - ${t('toolDetail.detailedUsage')}`}
+                      placeholder={t('toolDetail.detailedUsage')}
                     />
                   </div>
                   <p className="text-sm text-gray-300">
-                    Adım adım kullanım rehberi ve ipuçları
+                    {t('toolDetail.detailedDesc')}
                   </p>
                 </div>
               </div>
@@ -244,14 +256,14 @@ const ToolDetailPage = () => {
 
             {/* Resmi Site Linki */}
             <div className="bg-gray-800 rounded-xl p-6">
-              <h2 className="text-2xl font-bold mb-4">🔗 Resmi Website</h2>
+              <h2 className="text-2xl font-bold mb-4">{t('toolDetail.officialWebsite')}</h2>
               <a
                 href={tool.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors"
               >
-                🌐 {tool.tool} Resmi Sitesini Ziyaret Et
+                {t('toolDetail.visitOfficial', { toolName: tool.tool })}
                 <span>→</span>
               </a>
             </div>
@@ -259,7 +271,7 @@ const ToolDetailPage = () => {
 
           {/* Sohbet Bölümü */}
           <div className="bg-gray-800 rounded-xl p-6 h-fit">
-            <h2 className="text-2xl font-bold mb-4">💬 {tool.tool} Hakkında Sohbet</h2>
+            <h2 className="text-2xl font-bold mb-4">{t('toolDetail.chatAbout', { toolName: tool.tool })}</h2>
             
             {/* Chat Messages */}
             <div className="h-80 overflow-y-auto bg-gray-700 rounded-lg p-4 mb-4 space-y-3">
@@ -281,7 +293,7 @@ const ToolDetailPage = () => {
             <div className="flex gap-2">
               <input
                 type="text"
-                placeholder={`${tool.tool} hakkında soru sorun...`}
+                placeholder={t('toolDetail.chatPlaceholder', { toolName: tool.tool })}
                 value={chatInput}
                 onChange={(e) => setChatInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleChatSend()}
@@ -291,13 +303,12 @@ const ToolDetailPage = () => {
                 onClick={handleChatSend}
                 className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition-colors"
               >
-                Gönder
+                {t('toolDetail.chatSend')}
               </button>
             </div>
             
             <p className="text-xs text-gray-400 mt-2">
-              Bu araçla ilgili sorularınızı AI asistanımıza sorabilirsiniz. 
-              Yanıtlarda verilen linkler tıklanabilir.
+              {t('toolDetail.chatNote')}
             </p>
           </div>
         </div>

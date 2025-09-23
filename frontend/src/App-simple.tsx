@@ -4,14 +4,11 @@ import HomePage from './pages/HomePage';
 import ToolsPage from './pages/ToolsPage';
 import ToolDetailPage from './pages/ToolDetailPage';
 import ChatBot from './components/ChatBot';
-import LanguageSwitch from './components/LanguageSwitch';
-import { LanguageProvider, useLanguage } from './contexts/LanguageContext';
 
 function Navbar() {
   const [chatSmallOpen, setChatSmallOpen] = useState(false);
   const [chatLargeOpen, setChatLargeOpen] = useState(false);
   const location = useLocation();
-  const { t } = useLanguage();
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -27,7 +24,7 @@ function Navbar() {
               to="/" 
               className={`hover:underline transition-colors ${isActive('/') ? 'text-yellow-400' : ''}`}
             >
-              {t('navbar.home')}
+              Ana Sayfa
             </Link>
           </li>
           <li>
@@ -35,23 +32,20 @@ function Navbar() {
               to="/tools" 
               className={`hover:underline transition-colors ${isActive('/tools') ? 'text-yellow-400' : ''}`}
             >
-              {t('navbar.tools')}
+              Araçlar
             </Link>
           </li>
           <li>
             <button onClick={() => setChatLargeOpen(true)} className="hover:underline">
-              {t('navbar.chat')}
+              Sohbet
             </button>
-          </li>
-          <li>
-            <LanguageSwitch />
           </li>
         </ul>
         <button
           className="bg-yellow-400 text-black font-semibold px-4 py-2 rounded-full hover:bg-yellow-500 transition-all duration-200"
           onClick={() => setChatSmallOpen(true)}
         >
-          {t('navbar.startChat')}
+          Sohbete Başla
         </button>
       </nav>
 
@@ -66,18 +60,16 @@ function Navbar() {
 
 function App() {
   return (
-    <LanguageProvider>
-      <Router>
-        <div className="min-h-screen">
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/tools" element={<ToolsPage />} />
-            <Route path="/tools/:toolName" element={<ToolDetailPage />} />
-          </Routes>
-        </div>
-      </Router>
-    </LanguageProvider>
+    <Router>
+      <div className="min-h-screen">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/tools" element={<ToolsPage />} />
+          <Route path="/tools/:toolName" element={<ToolDetailPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

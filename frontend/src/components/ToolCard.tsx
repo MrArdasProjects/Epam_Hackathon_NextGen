@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface Tool {
   tool: string;
@@ -25,6 +26,7 @@ const ToolCard = ({ tool, onCardClick, onRatingUpdate }: ToolCardProps) => {
   const [userRating, setUserRating] = useState(0);
   const [hoveredStar, setHoveredStar] = useState(0);
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   const handleStarClick = (starValue: number, e: React.MouseEvent) => {
     e.stopPropagation(); // Kartın tıklama olayını engelle
@@ -79,11 +81,11 @@ const ToolCard = ({ tool, onCardClick, onRatingUpdate }: ToolCardProps) => {
         </div>
         {tool.isFree ? (
           <span className="bg-green-500 text-white text-xs px-2 py-1 rounded-full font-semibold">
-            Ücretsiz
+            {t('toolCard.free')}
           </span>
         ) : (
           <span className="bg-orange-500 text-white text-xs px-2 py-1 rounded-full font-semibold">
-            Ücretli
+            {t('toolCard.paid')}
           </span>
         )}
       </div>
@@ -131,7 +133,7 @@ const ToolCard = ({ tool, onCardClick, onRatingUpdate }: ToolCardProps) => {
         </div>
         
         <span className="text-xs text-gray-500">
-          {tool.reviewCount} değerlendirme
+          {tool.reviewCount} {t('toolCard.reviews')}
         </span>
       </div>
 

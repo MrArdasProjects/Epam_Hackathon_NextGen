@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useLanguage } from '../contexts/LanguageContext';
 
 // Mesajları parse eden component
 const MessageContent = ({ text }: { text: string }) => {
@@ -62,8 +63,9 @@ interface ChatBotProps {
 }
 
 const ChatBot = ({ open, setOpen, variant = 'small' }: ChatBotProps) => {
+  const { t } = useLanguage();
   const [messages, setMessages] = React.useState([
-    { from: 'bot', text: 'Merhaba! Nasıl yardımcı olabilirim?' },
+    { from: 'bot', text: t('chatbot.greeting') || 'Merhaba! Nasıl yardımcı olabilirim?' },
   ]);
   const [input, setInput] = React.useState('');
 
@@ -71,14 +73,19 @@ const ChatBot = ({ open, setOpen, variant = 'small' }: ChatBotProps) => {
   if (!input.trim()) return;
 
   const userText = input;
-  setMessages([...messages, { from: 'user', text: userText }]);
+  const updatedMessages = [...messages, { from: 'user', text: userText }];
+  setMessages(updatedMessages);
   setInput('');
 
   try {
     const res = await fetch('http://localhost:5000/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: userText }),
+      body: JSON.stringify({ 
+        message: userText,
+        language: t('language') || 'tr',
+        conversation_history: updatedMessages // Tüm sohbet geçmişini gönder
+      }),
     });
 
     const data = await res.json();
@@ -86,7 +93,7 @@ const ChatBot = ({ open, setOpen, variant = 'small' }: ChatBotProps) => {
     setMessages(prev => [...prev, { from: 'bot', text: data.response }]);
   } catch (err) {
     console.error("API hatası:", err);
-    setMessages(prev => [...prev, { from: 'bot', text: 'Bir hata oluştu. Lütfen tekrar deneyin.' }]);
+    setMessages(prev => [...prev, { from: 'bot', text: t('chatbot.error') }]);
   }
 };
 
@@ -101,9 +108,9 @@ const ChatBot = ({ open, setOpen, variant = 'small' }: ChatBotProps) => {
     <div className={`${baseClasses} ${variant === 'small' ? small : large}`}>
       {/* Başlık */}
       <div className="bg-gradient-to-r from-purple-700 to-pink-500 text-white p-4 font-bold flex justify-between items-center">
-        AI Asistanı 🤖
+        {t('chatbot.title')}
         <button onClick={() => setOpen(false)} className="text-white font-light text-sm hover:underline">
-          Kapat ✕
+          {t('chatbot.close')} ✕
         </button>
       </div>
 
@@ -128,7 +135,7 @@ const ChatBot = ({ open, setOpen, variant = 'small' }: ChatBotProps) => {
         <input
           type="text"
           className="flex-1 border rounded-l px-3 py-1 text-sm focus:outline-none"
-          placeholder="Bir şey yaz..."
+          placeholder={t('chatbot.placeholder')}
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && handleSend()}
@@ -137,7 +144,7 @@ const ChatBot = ({ open, setOpen, variant = 'small' }: ChatBotProps) => {
           className="bg-purple-600 text-white px-4 rounded-r hover:bg-purple-700"
           onClick={handleSend}
         >
-          Gönder
+          {t('chatbot.send')}
         </button>
       </div>
     </div>

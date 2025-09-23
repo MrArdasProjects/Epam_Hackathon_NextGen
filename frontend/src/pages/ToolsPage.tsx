@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ToolCard from '../components/ToolCard';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface Tool {
   tool: string;
@@ -21,12 +22,13 @@ const ToolsPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Tümü');
   const [loading, setLoading] = useState(true);
+  const { t } = useLanguage();
 
   // API'den araçları getir
   useEffect(() => {
     const fetchTools = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/tools');
+        const response = await fetch(`http://localhost:5000/api/tools?language=${t('language') || 'tr'}`);
         const data = await response.json();
         setTools(data);
         setFilteredTools(data);
@@ -38,7 +40,7 @@ const ToolsPage = () => {
     };
 
     fetchTools();
-  }, []);
+  }, [t]);
 
   // Kategorileri al
   const categories = ['Tümü', ...Array.from(new Set(tools.map(tool => tool.category)))];
@@ -82,7 +84,7 @@ const ToolsPage = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-900 flex items-center justify-center">
-        <div className="text-white text-xl">Araçlar yükleniyor...</div>
+        <div className="text-white text-xl">{t('common.loading')}</div>
       </div>
     );
   }
@@ -92,9 +94,9 @@ const ToolsPage = () => {
       {/* Header */}
       <div className="bg-gradient-to-r from-purple-700 to-pink-600 py-16 pt-24">
         <div className="container mx-auto px-6 text-center">
-          <h1 className="text-4xl font-bold mb-4">AI Araçları Kataloğu</h1>
+          <h1 className="text-4xl font-bold mb-4">{t('toolsPage.title')}</h1>
           <p className="text-xl text-purple-100">
-            Öğrenci hayatınızı kolaylaştıracak yapay zeka araçlarını keşfedin
+            {t('toolsPage.subtitle')}
           </p>
         </div>
       </div>
@@ -106,7 +108,7 @@ const ToolsPage = () => {
           <div className="relative max-w-2xl mx-auto">
             <input
               type="text"
-              placeholder="Ara..."
+              placeholder={t('toolsPage.search')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full px-6 py-4 bg-gray-800 border border-gray-700 rounded-full text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20"
