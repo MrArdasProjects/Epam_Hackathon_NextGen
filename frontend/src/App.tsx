@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import ToolsPage from './pages/ToolsPage';
+import ToolDetailPage from './pages/ToolDetailPage';
 import ChatBot from './components/ChatBot';
 
 function Navbar() {
@@ -65,6 +66,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/tools" element={<ToolsPage />} />
+          <Route path="/tools/:toolName" element={<ToolDetailPage />} />
         </Routes>
       </div>
     </Router>

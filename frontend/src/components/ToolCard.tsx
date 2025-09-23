@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface Tool {
   tool: string;
@@ -23,6 +24,7 @@ interface ToolCardProps {
 const ToolCard = ({ tool, onCardClick, onRatingUpdate }: ToolCardProps) => {
   const [userRating, setUserRating] = useState(0);
   const [hoveredStar, setHoveredStar] = useState(0);
+  const navigate = useNavigate();
 
   const handleStarClick = (starValue: number, e: React.MouseEvent) => {
     e.stopPropagation(); // Kartın tıklama olayını engelle
@@ -59,10 +61,15 @@ const ToolCard = ({ tool, onCardClick, onRatingUpdate }: ToolCardProps) => {
     return icons[toolName] || '🔧';
   };
 
+  const handleCardClick = () => {
+    const toolSlug = tool.tool.toLowerCase().replace(/[^a-z0-9]/g, '-');
+    navigate(`/tools/${toolSlug}`);
+  };
+
   return (
     <div
       className="bg-gray-800 rounded-xl p-6 cursor-pointer hover:bg-gray-700 transition-all duration-300 border border-gray-700 hover:border-gray-600"
-      onClick={() => onCardClick(tool)}
+      onClick={handleCardClick}
     >
       {/* Header */}
       <div className="flex items-center justify-between mb-4">

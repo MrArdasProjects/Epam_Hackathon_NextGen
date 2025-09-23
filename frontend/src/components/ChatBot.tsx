@@ -1,9 +1,58 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function formatMessage(text: string) {
+// Mesajları parse eden component
+const MessageContent = ({ text }: { text: string }) => {
+  const navigate = useNavigate();
+  
+  // URL'leri detect et
   const urlRegex = /(https?:\/\/[^\s]+)/g;
-  return text.replace(urlRegex, url => `<a href="${url}" target="_blank" class="text-blue-600 underline">${url}</a>`);
-}
+  const parts = text.split(urlRegex);
+  
+  return (
+    <span>
+      {parts.map((part, index) => {
+        // Eğer bu part bir URL ise
+        if (part.match(urlRegex)) {
+          if (part.includes('localhost:3000/tools/')) {
+            // Internal link - React Router ile yönlendir
+            const toolPath = part.replace('http://localhost:3000', '');
+            return (
+              <button
+                key={index}
+                onClick={() => navigate(toolPath)}
+                className="text-purple-400 underline hover:text-purple-300 font-medium cursor-pointer"
+              >
+                {part}
+              </button>
+            );
+          } else {
+            // External link - yeni sekmede aç
+            return (
+              <a
+                key={index}
+                href={part}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 underline hover:text-blue-300"
+              >
+                {part}
+              </a>
+            );
+          }
+        } else {
+          // Normal text - line breaks'i handle et
+          return part.split('\n').map((line, lineIndex, arr) => (
+            <React.Fragment key={`${index}-${lineIndex}`}>
+              {line}
+              {lineIndex < arr.length - 1 && <br />}
+            </React.Fragment>
+          ));
+        }
+      })}
+    </span>
+  );
+};
 
 
 interface ChatBotProps {
@@ -69,7 +118,7 @@ const ChatBot = ({ open, setOpen, variant = 'small' }: ChatBotProps) => {
         : 'bg-blue-500 text-white self-end ml-auto'
     }`}
   >
-    <span dangerouslySetInnerHTML={{ __html: formatMessage(msg.text) }} />
+    <MessageContent text={msg.text} />
   </div>
 ))}
       </div>

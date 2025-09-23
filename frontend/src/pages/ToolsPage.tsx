@@ -66,10 +66,7 @@ const ToolsPage = () => {
     setFilteredTools(filtered);
   }, [searchTerm, selectedCategory, tools]);
 
-  const handleCardClick = (tool: Tool) => {
-    // Şimdilik direkt link'e yönlendir, sonra detay sayfası yapacağız
-    window.open(tool.link, '_blank');
-  };
+  // handleCardClick artık ToolCard içinde yapılıyor
 
   const handleRatingUpdate = (toolName: string, newRating: number) => {
     // Şimdilik sadece local state güncelle, gerçek uygulamada backend'e gönderilir
@@ -97,7 +94,7 @@ const ToolsPage = () => {
         <div className="container mx-auto px-6 text-center">
           <h1 className="text-4xl font-bold mb-4">AI Araçları Kataloğu</h1>
           <p className="text-xl text-purple-100">
-            Akademik hayatınızı kolaylaştıracak yapay zeka araçlarını keşfedin
+            Öğrenci hayatınızı kolaylaştıracak yapay zeka araçlarını keşfedin
           </p>
         </div>
       </div>
@@ -159,7 +156,7 @@ const ToolsPage = () => {
               <ToolCard
                 key={index}
                 tool={tool}
-                onCardClick={handleCardClick}
+                onCardClick={() => {}} // Artık kullanılmıyor
                 onRatingUpdate={handleRatingUpdate}
               />
             ))}

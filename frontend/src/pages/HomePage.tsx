@@ -8,8 +8,8 @@ const HomePage = () => {
   return (
     <div className="min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('/bg2.jpg')" }}>
       <div className="text-center text-white pt-32 mt-16">
-        <h2 className="text-4xl font-bold">Akademik Yapay Zeka Asistanı</h2>
-        <p className="text-xl mt-4">Soru sor, araç keşfet, yardım al.</p>
+        <h2 className="text-4xl font-bold">Öğrenci Yapay Zeka Asistanı</h2>
+        <p className="text-xl mt-4">Soru sor, araç keşfet, ödevlerinde yardım al.</p>
         
         {/* CTA Buttons */}
         <div className="flex gap-4 justify-center mt-8">

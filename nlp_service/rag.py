@@ -7,7 +7,13 @@ import openai
 
 # Ortam değişkenini yükle
 load_dotenv()
-client = openai.OpenAI()  
+
+# OpenAI API key'ini environment variable'dan al
+api_key = os.getenv("OPENAI_API_KEY")
+if not api_key:
+    raise ValueError("OPENAI_API_KEY environment variable bulunamadı!")
+
+client = openai.OpenAI(api_key=api_key)  
 
 TOOLS_PATH = Path("tools.json")
 CACHE_PATH = Path("embedding_cache.json")
@@ -66,6 +72,16 @@ def load_tools_with_embeddings():
 
     return tools
 
+# Tool adını URL slug'a çevir
+def tool_to_slug(tool_name: str) -> str:
+    """Tool adını URL slug formatına çevirir"""
+    import re
+    # Küçük harfe çevir ve özel karakterleri tire ile değiştir
+    slug = re.sub(r'[^a-z0-9]+', '-', tool_name.lower())
+    # Başta ve sonunda tire varsa temizle
+    slug = slug.strip('-')
+    return slug
+
 # Ana RAG fonksiyonu
 def find_best_tool(user_input: str) -> str:
     
@@ -89,6 +105,18 @@ def find_best_tool(user_input: str) -> str:
             best_tool = tool
 
     if best_score < 0.75:
-        return "Bu konuda uygun bir araç bulamadım."
+        return "Bu konuda uygun bir araç bulamadım. 🔍\n\nTüm araçları görüntülemek için: http://localhost:3000/tools"
 
-    return f'{best_tool["tool"]}: {best_tool["academic_use"]} → {best_tool["link"]}'
+    # Tool slug'ını oluştur
+    tool_slug = tool_to_slug(best_tool["tool"])
+    internal_link = f"http://localhost:3000/tools/{tool_slug}"
+    
+    # Yeni format: hem internal hem external link
+    response = f"""{best_tool["tool"]}: {best_tool["academic_use"]}
+
+📄 Detaylı İnceleme: {internal_link}
+🌐 Resmi Site: {best_tool["link"]}
+
+💡 Detaylı sayfamızda videolu eğitimler ve kullanım rehberi bulabilirsiniz!"""
+    
+    return response

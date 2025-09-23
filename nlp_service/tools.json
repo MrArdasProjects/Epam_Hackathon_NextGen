@@ -2,136 +2,166 @@
   {
     "tool": "Consensus",
     "use": "Makale özeti",
-    "academic_use": "Belirli konulardaki akademik görüşleri özetler.",
+    "academic_use": "Öğrencilerin belirli konulardaki akademik görüşleri özetlemesine yardımcı olur.",
     "how_to": "Konu başlığını yazın, sistem özetleri otomatik sunar.",
     "keywords": [ "makale özeti", "özetleme", "research summary" ],
     "link": "https://consensus.app",
-    "video_link": "https://educatorsaitools.com/consensus-ai/"
+    "video_link": "https://educatorsaitools.com/consensus-ai/",
+    "short_video": "puKeOamRMzY",
+    "long_video": "I8VC6R7-J6M"
   },
   {
     "tool": "Gamma.app",
     "use": "Sunum hazırlama",
-    "academic_use": "Sunum formatında ders materyali hazırlamak isteyen akademisyenler için.",
+    "academic_use": "Öğrencilerin sunum formatında proje ve ödev materyali hazırlamasına yardımcı olur.",
     "how_to": "Metin ve görselleri girin, şablon seçin, sunum otomatik oluşur.",
     "keywords": [ "sunum", "slayt", "presentation" ],
     "link": "https://gamma.app",
-    "video_link": "https://educatorsaitools.com/gamma/"
+    "video_link": "https://educatorsaitools.com/gamma/",
+    "short_video": "vtMIUtE9doQ",
+    "long_video": "k5coa5_YDDg"
   },
   {
     "tool": "Quizgecko",
     "use": "Sınav sorusu oluşturma",
-    "academic_use": "Çoktan seçmeli sınavlar hazırlamak için.",
+    "academic_use": "Öğrencilerin ders çalışması için çoktan seçmeli test soruları oluşturur.",
     "how_to": "Metin girin, sorular otomatik üretilir.",
     "keywords": [ "soru", "test", "quiz", "sınav" ],
     "link": "https://quizgecko.com",
-    "video_link": "https://educatorsaitools.com/quizgecko/"
+    "video_link": "https://educatorsaitools.com/quizgecko/",
+    "short_video": "e5izLTJeNeM",
+    "long_video": "7cTFmsPXsk4"
   },
   {
     "tool": "Elicit",
     "use": "Literatür tarama",
-    "academic_use": "Araştırma alanında ilgili kaynakları bulmak için.",
+    "academic_use": "Öğrencilerin araştırma ödevleri için ilgili kaynakları bulmasına yardımcı olur.",
     "how_to": "Konu başlığı girerek güncel kaynakları görebilirsiniz.",
     "keywords": [ "literatür tarama", "araştırma bulma", "literature review" ],
     "link": "https://elicit.org",
-    "video_link": "https://educatorsaitools.com/elicit-ai/"
+    "video_link": "https://educatorsaitools.com/elicit-ai/",
+    "short_video": "SRhEB2PCrG0",
+    "long_video": "3rFbmHOiLuk"
   },
   {
     "tool": "Scite.ai",
     "use": "Kaynak doğrulama",
-    "academic_use": "Referansların güvenilirliğini analiz eder.",
+    "academic_use": "Öğrencilerin ödevlerinde kullandığı referansların güvenilirliğini analiz eder.",
     "how_to": "Kaynağı girin, nerede ve nasıl kullanıldığını gösterir.",
     "keywords": [ "kaynak doğrulama", "atıf kontrolü", "citation" ],
     "link": "https://scite.ai",
-    "video_link": "https://educatorsaitools.com/scite-ai/"
+    "video_link": "https://educatorsaitools.com/scite-ai/",
+    "short_video": "p6CCbemp0tY",
+    "long_video": "4tjfIJg40MY"
   },
   {
     "tool": "DeepL Write",
     "use": "Yazım geliştirme",
-    "academic_use": "Akademik İngilizce metinleri düzeltmek ve iyileştirmek için.",
+    "academic_use": "Öğrencilerin akademik İngilizce ödevlerini düzeltmek ve iyileştirmek için.",
     "how_to": "Metni yapıştırın, önerileri alın.",
     "keywords": [ "akademik yazım", "gramer düzeltme", "yazı iyileştirme" ],
     "link": "https://www.deepl.com/write",
-    "video_link": "https://educatorsaitools.com/deeplwrite/"
+    "video_link": "https://educatorsaitools.com/deeplwrite/",
+    "short_video": "RpT-2v-86hw",
+    "long_video": "Xb8EN3N2HKw"
   },
   {
     "tool": "Pictory",
     "use": "Ders videosu hazırlama",
-    "academic_use": "Ders içeriklerini video haline getirmek için.",
+    "academic_use": "Öğrencilerin proje sunumlarını video haline getirmek için.",
     "how_to": "Metinleri girin, görsel ve ses ekleyin, video oluşturun.",
     "keywords": [ "ders videosu", "eğitim videosu", "video hazırlama" ],
     "link": "https://pictory.ai",
-    "video_link": "https://educatorsaitools.com/pictory/"
+    "video_link": "https://educatorsaitools.com/pictory/",
+    "short_video": "GxzJCYacnqI",
+    "long_video": "heHnYt6XKTk"
   },
   {
     "tool": "Teachermatic",
     "use": "Ders planı oluşturma",
-    "academic_use": "Ders içeriklerini haftalık olarak düzenlemek için.",
+    "academic_use": "Öğrencilerin çalışma programlarını ve ders planlarını düzenlemesine yardımcı olur.",
     "how_to": "Konu başlıklarını girerek haftalık planlar hazırlayabilirsiniz.",
     "keywords": [ "ders planı", "müfredat", "syllabus" ],
     "link": "https://teachermatic.com",
-    "video_link": "https://educatorsaitools.com/teachermatic/"
+    "video_link": "https://educatorsaitools.com/teachermatic/",
+    "short_video": "3ys1zKXKQC4",
+    "long_video": "y-YVbwJK9Iw"
   },
   {
     "tool": "Scholar GPT",
     "use": "GPT tabanlı akademik asistan",
-    "academic_use": "Akademik sorulara GPT destekli yanıtlar sunar.",
+    "academic_use": "Öğrencilerin akademik sorularına GPT destekli yanıtlar sunar.",
     "how_to": "Doğal dilde soru yazın, detaylı yanıt alın.",
     "keywords": [ "akademik GPT", "GPT asistanı", "akademik araştırma yardımı" ],
     "link": "https://scholar-gpt.org",
-    "video_link": "https://educatorsaitools.com/scholar/"
+    "video_link": "https://educatorsaitools.com/scholar/",
+    "short_video": "6QBjD7QOX7E",
+    "long_video": "xEoJqy6RJAA"
   },
   {
     "tool": "Grammarly",
     "use": "Yazım ve dilbilgisi düzeltme",
-    "academic_use": "Akademik yazılarda dilbilgisi, yazım ve üslup hatalarını düzeltir.",
+    "academic_use": "Öğrencilerin akademik ödevlerinde dilbilgisi, yazım ve üslup hatalarını düzeltir.",
     "how_to": "Metni yapıştırın, dilbilgisi ve üslup düzeltme önerileri alın.",
     "keywords": [ "gramer düzeltme", "yazım kontrolü", "akademik yazım" ],
     "link": "https://grammarly.com",
-    "video_link": "https://educatorsaitools.com/grammarly/"
+    "video_link": "https://educatorsaitools.com/grammarly/",
+    "short_video": "doTMUdBBq7A",
+    "long_video": "5LjKA1eLQ_0"
   },
   {
     "tool": "QuillBot",
     "use": "Paraphrasing ve özetleme",
-    "academic_use": "Metinleri akademik standartlara göre yeniden yazmak veya özetlemek için.",
+    "academic_use": "Öğrencilerin ödevlerini akademik standartlara göre yeniden yazmak veya özetlemek için.",
     "how_to": "Metni yapıştırın, yeniden yazım veya özetleme seçeneklerini kullanın.",
     "keywords": [ "paraphrase", "özetleme", "yazı sadeleştirme" ],
     "link": "https://quillbot.com",
-    "video_link": "https://educatorsaitools.com/quillbot/"
+    "video_link": "https://educatorsaitools.com/quillbot/",
+    "short_video": "8_Xfp6liyoc",
+    "long_video": "cZT9J8IygIA"
   },
   {
     "tool": "Eduaide.ai",
     "use": "Eğitim materyali geliştirme",
-    "academic_use": "Eğitimciler için ders planı, rubrik ve etkinlik önerileri üretir.",
+    "academic_use": "Öğrencilerin grup projelerinde ders planı, rubrik ve etkinlik önerileri oluşturur.",
     "how_to": "İhtiyacınıza uygun modülü seçin ve materyalleri oluşturun.",
     "keywords": [ "ders planı", "eğitim materyali", "rubrik" ],
     "link": "https://eduaide.ai",
-    "video_link": "https://educatorsaitools.com/eduaide/"
+    "video_link": "https://educatorsaitools.com/eduaide/",
+    "short_video": "ZDuW-TbNOws",
+    "long_video": "1Q2FY7YPeNw"
   },
   {
     "tool": "ClassPoint",
     "use": "Etkileşimli sunum",
-    "academic_use": "PowerPoint üzerinden canlı anketler ve quizler düzenlemek için.",
+    "academic_use": "Öğrencilerin PowerPoint sunumlarında canlı anketler ve quizler eklemesine yardımcı olur.",
     "how_to": "PowerPoint içinde ClassPoint eklentisini kullanarak sorular oluşturun.",
     "keywords": [ "interaktif sunum", "canlı quiz", "PowerPoint soru ekleme" ],
     "link": "https://www.classpoint.io",
-    "video_link": "https://educatorsaitools.com/classpoint/"
+    "video_link": "https://educatorsaitools.com/classpoint/",
+    "short_video": "Vt2J6f-iYdU",
+    "long_video": "RyMP7CdPA1k"
   },
   {
     "tool": "Mindgrasp",
     "use": "Özet çıkarma",
-    "academic_use": "PDF, video ve ses dosyalarından özet ve önemli bilgiler elde eder.",
+    "academic_use": "Öğrencilerin ders materyallerinden PDF, video ve ses dosyalarından özet ve önemli bilgiler elde etmesine yardımcı olur.",
     "how_to": "İçerik dosyasını yükleyin, otomatik özet alın.",
     "keywords": [ "özet çıkarma", "bilgi yakalama", "video özeti" ],
     "link": "https://mindgrasp.ai",
-    "video_link": "https://educatorsaitools.com/mindgrasp/"
+    "video_link": "https://educatorsaitools.com/mindgrasp/",
+    "short_video": "PEwVq6kw1B0",
+    "long_video": "BGF8_s9OTik"
   },
   {
     "tool": "SlidesAI",
     "use": "Otomatik sunum slaytı oluşturma",
-    "academic_use": "Metin girişine dayalı otomatik sunum slaytları üretir.",
+    "academic_use": "Öğrencilerin metin girişine dayalı otomatik sunum slaytları oluşturmasına yardımcı olur.",
     "how_to": "Konu başlığını yazın, slayt tasarımlarını otomatik alın.",
     "keywords": [ "otomatik sunum", "slayt oluşturma", "presentation generation" ],
     "link": "https://slidesai.io",
-    "video_link": "https://educatorsaitools.com/slidesai/"
+    "video_link": "https://educatorsaitools.com/slidesai/",
+    "short_video": "oVcG1U4l514",
+    "long_video": "wxNq_TMK930"
   }
 ]
