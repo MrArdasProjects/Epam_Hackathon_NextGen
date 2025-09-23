@@ -1,3 +1,11 @@
+
+<img width="2485" height="1471" alt="Ekran görüntüsü 2025-09-23 234743" src="https://github.com/user-attachments/assets/7110ff0d-f4a8-4164-9a75-a85ff1323907" />
+<img width="1164" height="1369" alt="Ekran görüntüsü 2025-09-23 235113" src="https://github.com/user-attachments/assets/aad0c02c-8923-4059-80aa-b96cc8c1f7f0" />
+<img width="2489" height="1467" alt="Ekran görüntüsü 2025-09-23 234752" src="https://github.com/user-attachments/assets/67072563-db04-4119-9f15-ca70eddf5e6a" />
+<img width="2488" height="1459" alt="Ekran görüntüsü 2025-09-23 234831" src="https://github.com/user-attachments/assets/de666a40-f37b-4b68-8b73-6e63ffc9aadb" />
+
+
+
 # 🤖 Akademik AI Asistanı
 
 RAG (Retrieval-Augmented Generation) tabanlı akademik yapay zeka asistanı ve AI araçları kataloğu.
